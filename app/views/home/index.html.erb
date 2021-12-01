@@ -1,2 +1,10 @@
-<h1>Página Principal</h1>
+
+<%= month_calendar(events: @eventos, attribute: :fecha_inicial, end_attribute: :fecha_final ) do |date, eventos| %>
+  <%= date.day %>
+  <% eventos.each do |evento| %>
+    <div>
+ 	<%= link_to evento.nombre, evento %>    
+    </div>
+  <% end %>
+<% end %>
 
