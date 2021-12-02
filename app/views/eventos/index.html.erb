@@ -10,7 +10,7 @@
       <th>Fecha Final</th>
       <th>Hora Inicio</th>
       <th>Hora Fin</th>
-      <th>Horas</th>
+      <th>Días</th>
       
     </tr>
   </thead>
@@ -23,7 +23,7 @@
         <td><%= evento.end_time.strftime("%d-%m-%Y") %></td>
         <td><%= evento.start_time.strftime("%H:%M") %></td>
         <td><%= evento.end_time.strftime("%H:%M") %></td>
-        <td><%= evento.end_time - evento.start_time %></td>
+        <td><%= ((evento.end_time - evento.start_time)/86400).to_i + 1 %></td>
         
         
       </tr>

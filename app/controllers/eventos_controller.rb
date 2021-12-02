@@ -1,10 +1,11 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /eventos or /eventos.json
   def index
     @eventos = Evento.all
-
+    
   end
 
   # GET /eventos/1 or /eventos/1.json
