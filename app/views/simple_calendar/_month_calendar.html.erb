@@ -1,13 +1,20 @@
 <div class="simple-calendar">
-  <div class="card">
-  <div class="card-header">
+ 
     <div class="calendar-heading">
-     <h1 ><center> <%= link_to t('simple_calendar.previous', default: 'Anterior'), calendar.url_for_previous_view, class:"btn btn-info" %>
-      <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-      <%= link_to t('simple_calendar.next', default: 'Siguiente'), calendar.url_for_next_view, class:"btn btn-info" %></center></h1>
+      
+      <nav class="nav">
+
+            <%= link_to t('simple_calendar.previous', default: 'Anterior'), calendar.url_for_previous_view, class: "nav-link" %>
+            
+           <span class="calendar-title mx-auto text-uppercase fs-1 fw-bold"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span> 
+        
+            <%= link_to t('simple_calendar.next', default: 'Siguiente'), calendar.url_for_next_view, class: "nav-link active" %>
+       </nav>
+       
     </div>
-  </div>
-  <div class="card-body">
+ 
+     
+  
     <table class="table table-responsive">
       <thead class="table-dark">
         <tr>
@@ -33,6 +40,6 @@
         <% end %>
       </tbody>
     </table>
-</div>
-</div>
+
+
 </div>

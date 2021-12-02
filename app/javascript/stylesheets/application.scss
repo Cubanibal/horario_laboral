@@ -9,6 +9,7 @@ $green:   #198754;
 $teal:    #20c997;
 $cyan:    #0dcaf0;
 
+
 $white:    #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
@@ -28,7 +29,7 @@ $info:          $cyan;
 $warning:       $yellow;
 $danger:        $red;
 $light:         $gray-100;
-$dark:          $gray-500;
+$dark:          $gray-900;
 
 .simple-calendar {
   .day {}
@@ -83,6 +84,9 @@ a:hover {
 
 a:active {
 
+}
+.titulo{
+  color: red;
 }
 
 @import "bootstrap"

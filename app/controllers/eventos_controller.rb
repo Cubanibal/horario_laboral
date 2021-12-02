@@ -4,6 +4,7 @@ class EventosController < ApplicationController
   # GET /eventos or /eventos.json
   def index
     @eventos = Evento.all
+
   end
 
   # GET /eventos/1 or /eventos/1.json
@@ -25,7 +26,7 @@ class EventosController < ApplicationController
 
     respond_to do |format|
       if @evento.save
-        format.html { redirect_to @evento, notice: "Evento was successfully created." }
+        format.html { redirect_to @evento, notice: "Evento creado correctamente." }
         format.json { render :show, status: :created, location: @evento }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class EventosController < ApplicationController
   def update
     respond_to do |format|
       if @evento.update(evento_params)
-        format.html { redirect_to @evento, notice: "Evento was successfully updated." }
+        format.html { redirect_to @evento, notice: "Evento actualizado correctamente." }
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +52,7 @@ class EventosController < ApplicationController
   def destroy
     @evento.destroy
     respond_to do |format|
-      format.html { redirect_to eventos_url, notice: "Evento was successfully destroyed." }
+      format.html { redirect_to eventos_url, notice: "Evento eliminado correctamente." }
       format.json { head :no_content }
     end
   end
@@ -64,6 +65,6 @@ class EventosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def evento_params
-      params.require(:evento).permit(:nombre, :fecha_inicial, :fecha_final)
+      params.require(:evento).permit(:name, :start_time, :end_time)
     end
 end

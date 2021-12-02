@@ -14,9 +14,9 @@ class EventosTest < ApplicationSystemTestCase
     visit eventos_url
     click_on "New Evento"
 
-    fill_in "Fecha final", with: @evento.fecha_final
-    fill_in "Fecha inicial", with: @evento.fecha_inicial
-    fill_in "Nombre", with: @evento.nombre
+    fill_in "End time", with: @evento.end_time
+    fill_in "Name", with: @evento.name
+    fill_in "Start time", with: @evento.start_time
     click_on "Create Evento"
 
     assert_text "Evento was successfully created"
@@ -27,9 +27,9 @@ class EventosTest < ApplicationSystemTestCase
     visit eventos_url
     click_on "Edit", match: :first
 
-    fill_in "Fecha final", with: @evento.fecha_final
-    fill_in "Fecha inicial", with: @evento.fecha_inicial
-    fill_in "Nombre", with: @evento.nombre
+    fill_in "End time", with: @evento.end_time
+    fill_in "Name", with: @evento.name
+    fill_in "Start time", with: @evento.start_time
     click_on "Update Evento"
 
     assert_text "Evento was successfully updated"

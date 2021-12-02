@@ -1,5 +1,14 @@
-<h1>New Evento</h1>
 
-<%= render 'form', evento: @evento %>
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
+   
+      Nuevo Evento
+    </h1>
+  </div>
 
-<%= link_to 'Back', eventos_path %>
+<div class="card-body">
+ <%= render 'form', evento: @evento %>  
+ <%= link_to 'Atras', eventos_path %>
+</div>
+</div>

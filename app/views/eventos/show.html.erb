@@ -1,20 +1,33 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @evento.nombre %>
-</p>
 
-<p>
-  <strong>Fecha inicial:</strong>
-  <%= @evento.fecha_inicial %>
-</p>
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title">
+      
+      <%= @evento.name %>
+    </h5>
+  </div>
+  <br/>
+  <div class="card-body">
+    <p class="card-text">
+      <strong>Fecha inicial:</strong>
+      <%= @evento.start_time.strftime("%d-%m-%Y") %> |
+      <strong>Hora inicio:</strong>
+      <%= @evento.start_time.strftime("%H:%M") %>
+    </p>
 
-<p>
-  <strong>Fecha final:</strong>
-  <%= @evento.fecha_final %>
-</p>
+    <p class="card-text">
+      <strong>Fecha final:</strong>
+      <%= @evento.end_time.strftime("%d-%m-%Y") %> |
+      <strong>Hora final:</strong>
+      <%= @evento.end_time.strftime("%H:%M") %>
+    </p>
+  </div>
+  <br/>
+  <div class="card-footer">
 
-<%= link_to 'Editar', edit_evento_path(@evento) %> |
-<%= link_to 'Borrar', @evento, method: :delete, data: { confirm: 'Estás seguro?' } %>
-<%= link_to 'Atras', eventos_path %>
+    <%= link_to 'Editar', edit_evento_path(@evento) %> |
+    <%= link_to 'Atras', eventos_path %> |
+    <%= link_to 'Eliminar', @evento, method: :delete, data: { confirm: 'Estás seguro?' } %>
+  </div>
+</div>

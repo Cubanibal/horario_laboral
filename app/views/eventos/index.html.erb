@@ -1,26 +1,31 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Eventos</h1>
 
-<table>
-  <thead>
+<table class="table  table-responsive table align-middle table-hover table-bordered ">
+  <thead class="table-light">
     <tr>
-      <th>Nombre</th>
-      <th>Fecha inicial</th>
-      <th>Fecha final</th>
-      <th colspan="3"></th>
+      <th scope="col">Evento</th>
+      <th>Fecha Inicial</th>
+      <th>Fecha Final</th>
+      <th>Hora Inicio</th>
+      <th>Hora Fin</th>
+      <th>Horas</th>
+      
     </tr>
   </thead>
 
   <tbody>
     <% @eventos.each do |evento| %>
       <tr>
-        <td><%= evento.nombre %></td>
-        <td><%= evento.fecha_inicial %></td>
-        <td><%= evento.fecha_final %></td>
-        <td><%= link_to 'Show', evento %></td>
-        <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
-        <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="row"><%= link_to evento.name, evento %></th>
+        <td><%= evento.start_time.strftime("%d-%m-%Y") %></td>
+        <td><%= evento.end_time.strftime("%d-%m-%Y") %></td>
+        <td><%= evento.start_time.strftime("%H:%M") %></td>
+        <td><%= evento.end_time.strftime("%H:%M") %></td>
+        <td><%= evento.end_time - evento.start_time %></td>
+        
+        
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +33,5 @@
 
 <br>
 
-<%= link_to 'New Evento', new_evento_path %>
+<%= link_to 'Nuevo Evento', new_evento_path, class:"btn btn-primary" %>
+

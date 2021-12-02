@@ -1,10 +1,12 @@
 
-<%= month_calendar(events: @eventos, attribute: :fecha_inicial, end_attribute: :fecha_final ) do |date, eventos| %>
+<%= month_calendar(events: @eventos) do |date, eventos| %>
   <%= date.day %>
   <% eventos.each do |evento| %>
     <div>
- 	<%= link_to evento.nombre, evento %>    
+ 	<%= link_to evento.name, evento %>    
     </div>
   <% end %>
 <% end %>
+
+
 
