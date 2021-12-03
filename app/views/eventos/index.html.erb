@@ -1,37 +1,45 @@
 
-
 <h1>Eventos</h1>
 
-<table class="table  table-responsive table align-middle table-hover table-bordered ">
-  <thead class="table-light">
+<%= month_calendar(events: @cita) do |date, eventos| %>
+    <%= date.day %>
+      <% eventos.each do |evento| %>
+        <% if evento.user_id == current_user.id %>
+            <div>
+            <%= link_to evento.name, evento %>    
+            </div>
+        <% end %>
+      <% end %>
+  <% end %>
+
+<table>
+  <thead>
     <tr>
-      <th scope="col">Evento</th>
-      <th>Fecha Inicial</th>
-      <th>Fecha Final</th>
-      <th>Hora Inicio</th>
-      <th>Hora Fin</th>
-      <th>Días</th>
-      
+      <th>Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>User</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @eventos.each do |evento| %>
-      <tr>
-        <th scope="row"><%= link_to evento.name, evento %></th>
-        <td><%= evento.start_time.strftime("%d-%m-%Y") %></td>
-        <td><%= evento.end_time.strftime("%d-%m-%Y") %></td>
-        <td><%= evento.start_time.strftime("%H:%M") %></td>
-        <td><%= evento.end_time.strftime("%H:%M") %></td>
-        <td><%= ((evento.end_time - evento.start_time)/86400).to_i + 1 %></td>
-        
-        
-      </tr>
+     <% if evento.user_id == current_user.id %>
+        <tr>
+          <td><%= evento.name %></td>
+          <td><%= evento.start_time %></td>
+          <td><%= evento.end_time %></td>
+          <td><%= evento.user_id %></td>
+          <td><%= link_to 'Show', evento %></td>
+          <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
+          <td><%= link_to 'Destroy', evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Nuevo Evento', new_evento_path, class:"btn btn-primary" %>
-
+<%= link_to 'New Evento', new_evento_path %>

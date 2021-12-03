@@ -1,11 +1,15 @@
 class EventosController < ApplicationController
   before_action :set_evento, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: %i[ edit update destroy ]
   before_action :authenticate_user!
 
   # GET /eventos or /eventos.json
   def index
     @eventos = Evento.all
-    
+    # Scope your query to the dates being shown:
+    start_time = params.fetch(:start_date, Date.today).to_date
+    @cita = Evento.where(start_time: start_time.beginning_of_month.beginning_of_week..start_time.end_of_month.end_of_week)
+  
   end
 
   # GET /eventos/1 or /eventos/1.json
@@ -27,7 +31,7 @@ class EventosController < ApplicationController
 
     respond_to do |format|
       if @evento.save
-        format.html { redirect_to @evento, notice: "Evento creado correctamente." }
+        format.html { redirect_to @evento, notice: "Evento was successfully created." }
         format.json { render :show, status: :created, location: @evento }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +44,7 @@ class EventosController < ApplicationController
   def update
     respond_to do |format|
       if @evento.update(evento_params)
-        format.html { redirect_to @evento, notice: "Evento actualizado correctamente." }
+        format.html { redirect_to @evento, notice: "Evento was successfully updated." }
         format.json { render :show, status: :ok, location: @evento }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,9 +57,14 @@ class EventosController < ApplicationController
   def destroy
     @evento.destroy
     respond_to do |format|
-      format.html { redirect_to eventos_url, notice: "Evento eliminado correctamente." }
+      format.html { redirect_to eventos_url, notice: "Evento was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+  # Crear método para determinar el usuario correcto
+  def correct_user
+    @evento = current_user.eventos.find_by(id: params[:id])
+    redirect_to root_path, notice: "No autorizado a editar" if @evento.nil?
   end
 
   private
@@ -66,6 +75,6 @@ class EventosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def evento_params
-      params.require(:evento).permit(:name, :start_time, :end_time)
+      params.require(:evento).permit(:name, :start_time, :end_time, :user_id)
     end
 end

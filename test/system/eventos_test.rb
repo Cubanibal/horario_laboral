@@ -17,6 +17,7 @@ class EventosTest < ApplicationSystemTestCase
     fill_in "End time", with: @evento.end_time
     fill_in "Name", with: @evento.name
     fill_in "Start time", with: @evento.start_time
+    fill_in "User", with: @evento.user_id
     click_on "Create Evento"
 
     assert_text "Evento was successfully created"
@@ -30,6 +31,7 @@ class EventosTest < ApplicationSystemTestCase
     fill_in "End time", with: @evento.end_time
     fill_in "Name", with: @evento.name
     fill_in "Start time", with: @evento.start_time
+    fill_in "User", with: @evento.user_id
     click_on "Update Evento"
 
     assert_text "Evento was successfully updated"

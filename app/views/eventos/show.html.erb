@@ -1,33 +1,24 @@
 
 
-<div class="card">
-  <div class="card-header">
-    <h5 class="card-title">
-      
-      <%= @evento.name %>
-    </h5>
-  </div>
-  <br/>
-  <div class="card-body">
-    <p class="card-text">
-      <strong>Fecha inicial:</strong>
-      <%= @evento.start_time.strftime("%d-%m-%Y") %> |
-      <strong>Hora inicio:</strong>
-      <%= @evento.start_time.strftime("%H:%M") %>
-    </p>
+<p>
+  <strong>Name:</strong>
+  <%= @evento.name %>
+</p>
 
-    <p class="card-text">
-      <strong>Fecha final:</strong>
-      <%= @evento.end_time.strftime("%d-%m-%Y") %> |
-      <strong>Hora final:</strong>
-      <%= @evento.end_time.strftime("%H:%M") %>
-    </p>
-  </div>
-  <br/>
-  <div class="card-footer">
+<p>
+  <strong>Start time:</strong>
+  <%= @evento.start_time %>
+</p>
 
-    <%= link_to 'Editar', edit_evento_path(@evento) %> |
-    <%= link_to 'Atras', eventos_path %> |
-    <%= link_to 'Eliminar', @evento, method: :delete, data: { confirm: 'Estás seguro?' } %>
-  </div>
-</div>
+<p>
+  <strong>End time:</strong>
+  <%= @evento.end_time %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @evento.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_evento_path(@evento) %> |
+<%= link_to 'Back', eventos_path %>
