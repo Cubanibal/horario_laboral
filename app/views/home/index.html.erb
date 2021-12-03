@@ -1,5 +1,18 @@
 
-<h1> Página Principal</h1>
-
-
-
+<% if user_signed_in? %>
+	<%= month_calendar(events: @cita) do |date, citas| %>
+	    <%= date.day %>
+	      <% citas.each do |cita| %>
+	        <% if cita.user_id == current_user.id %>
+	            <div>
+	            <%= link_to cita.name, root_path %>    
+	            </div>
+	        <% end %>
+	      <% end %>
+	  <% end %>
+<% else %>
+   <%= month_calendar(events: @cita) do |date, eventos| %>
+	    <%= date.day %>
+	      
+	<% end %>
+<% end %>

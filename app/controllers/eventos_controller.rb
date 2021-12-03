@@ -6,10 +6,6 @@ class EventosController < ApplicationController
   # GET /eventos or /eventos.json
   def index
     @eventos = Evento.all
-    # Scope your query to the dates being shown:
-    start_time = params.fetch(:start_date, Date.today).to_date
-    @cita = Evento.where(start_time: start_time.beginning_of_month.beginning_of_week..start_time.end_of_month.end_of_week)
-  
   end
 
   # GET /eventos/1 or /eventos/1.json
