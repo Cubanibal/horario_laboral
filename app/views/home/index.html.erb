@@ -4,7 +4,7 @@
 	    <%= date.day %>
 	      <% citas.each do |cita| %>
 	        <% if cita.user_id == current_user.id %>
-	            <div>
+	            <div class="container">
 	            <%= link_to cita.name, root_path %>    
 	            </div>
 	        <% end %>
