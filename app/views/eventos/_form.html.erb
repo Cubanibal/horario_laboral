@@ -1,7 +1,7 @@
 <%= form_with(model: evento) do |form| %>
   <% if evento.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(evento.errors.count, "error") %> prohibited this evento from being saved:</h2>
+      <h2><%= pluralize(evento.errors.count, "error") %> Este evento no se puede grabar:</h2>
 
       <ul>
         <% evento.errors.each do |error| %>
@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+  <div class="mb-3">
+    <%= form.label :fecha_inicial, class: "form-label" %>
+    <%= form.datetime_select :start_time, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time %>
+  <div class="mb-3">
+    <%= form.label :fecha_final, class: "form-label" %>
+    <%= form.datetime_select :end_time, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -32,6 +32,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-primary" %>
   </div>
 <% end %>

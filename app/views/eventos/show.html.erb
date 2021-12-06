@@ -1,24 +1,29 @@
 
+<div class="container bg-light p-3" >
 
-<p>
-  <strong>Name:</strong>
+<p class="text-uppercase fs-2">
+  <strong>Nombre:</strong>
   <%= @evento.name %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
-  <%= @evento.start_time %>
+  <strong>Fecha Inicial:</strong>
+  <%= @evento.start_time.strftime("%d-%m-%Y") %>
+  <strong>Hora Inicio:</strong>
+  <%= @evento.start_time.strftime("%H:%M") %>
 </p>
 
 <p>
-  <strong>End time:</strong>
-  <%= @evento.end_time %>
+  <strong>Fecha Final:</strong>
+  <%= @evento.end_time.strftime("%d-%m-%Y") %>
+  <strong>Hora Fin:</strong>
+  <%= @evento.end_time.strftime("%H-%M") %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @evento.user_id %>
-</p>
 
-<%= link_to 'Edit', edit_evento_path(@evento) %> |
-<%= link_to 'Back', eventos_path %>
+
+<%= link_to 'Editar', edit_evento_path(@evento), class:"btn btn-outline-primary" %> |
+
+<%= link_to 'Eliminar', @evento, method: :delete, data: { confirm: 'Estás seguro?' }, class:"btn btn-outline-danger" %> |
+<%= link_to 'Atrás', eventos_path, class:"btn btn-outline-secondary" %>
+</div>
