@@ -1,11 +1,16 @@
-
+<div class="container">
 <% if user_signed_in? %>
 	<%= month_calendar(events: @cita) do |date, citas| %>
 	    <%= date.day %>
 	      <% citas.each do |cita| %>
 	        <% if cita.user_id == current_user.id %>
 	            <div class="container">
-	            <%= link_to cita.name, root_path %>    
+	            <%= link_to cita.name, root_path %> 
+					<% if cita.name == "Trabajo" %>
+						<% @dias_trabajo += 1 %>
+					<% elsif cita.name == "Vacaciones" %>
+						<% @dias_vaca += 1 %>	
+					<% end %>
 	            </div>
 	        <% end %>
 	      <% end %>
@@ -16,3 +21,16 @@
 	      
 	<% end %>
 <% end %>
+
+<div>
+	<div class="row row-cols-3">
+		<% if @dias_trabajo != 0 %>
+			<div class="col">Días Trabajados: <%= @dias_trabajo %> </div>
+			<div class="col">Horas: <%= @dias_trabajo * 8 %> </div>
+		<% end %>
+		<% if @dias_vaca != 0 %>
+			<div class="col">Vacaciones: <%= @dias_vaca %></div>
+		<% end %>
+	</div>
+</div>
+</div>
