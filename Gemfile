@@ -15,7 +15,7 @@ gem 'devise', '~> 4.8'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :production do
-  gem 'pg', '~> 1.2', '>= 1.2.3'
+  gem 'pg'
 end
 
 group :development, :test do
