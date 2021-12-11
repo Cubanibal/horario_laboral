@@ -1,6 +1,6 @@
 {
   "name": "horario-laboral",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@popperjs/core": "^2.11.0",
     "@rails/actioncable": "^6.0.0",
